@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
@@ -97,7 +97,7 @@
 </main>
 <script>
 var KEY='swiss-tool-v2',OLD_KEY='swiss-tool-v1',WIN=3,DRAW=1,BYE=3,FIXED_NAME='Beyblade X 野人團';
-var BUILTIN=['高高','RED','小武','文哥','阿展','阿坤','泫','阿哲','ROY','小佑','wenchi','謙','元','尖頭','EN','堯'];
+var BUILTIN=['高高','RED','小武','小佑','阿哲','wenchi','阿坤','泫','ROY','文哥','堯','EN','尖頭'];
 function blank(){return{tournament:{name:FIXED_NAME,rounds:6,format:'swiss'},players:[],matches:[],activeRound:0}}
 function normalize(s){s=s||blank();s.tournament=s.tournament||{};s.tournament.name=FIXED_NAME;s.tournament.rounds=Number(s.tournament.rounds)||6;if(!s.tournament.format)s.tournament.format='swiss';s.players=Array.isArray(s.players)?s.players:[];s.matches=Array.isArray(s.matches)?s.matches:[];s.players.forEach(function(p,i){if(!p.id)p.id=id('p');if(!p.status)p.status='active';if(!p.seed)p.seed=i+1});s.matches.forEach(function(m){if(m.player1Id&&!m.p1)m.p1=m.player1Id;if(m.player2Id!==undefined&&!('p2'in m))m.p2=m.player2Id;if(!m.type)m.type=s.tournament.format});return s}
 function load(){try{var raw=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);return raw?normalize(JSON.parse(raw)):blank()}catch(e){return blank()}}
